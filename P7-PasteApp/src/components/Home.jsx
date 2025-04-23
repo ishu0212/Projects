@@ -22,12 +22,21 @@ const Home = () => {
   },[pasteId])
 
   function createPaste(){
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: '2-digit',
+      minute:'2-digit'
+    };
+
     const paste = {
       title: title,
       content: value,
       _id: pasteId || 
           Date.now().toString(36),
-      createdAt: new Date().toISOString(),
+      createdAt: new Date().toLocaleDateString(undefined, options),
     }
 
     if(pasteId){
